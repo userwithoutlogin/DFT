@@ -13,6 +13,6 @@ import java.util.List;
  * @author root
  */
 public interface FourierTransform {
-//    public List<Double> reverse(List<Complex>  spectrumSamples);
+// public  Double reverse( Complex  spectrumSample);
     public  Complex direct(Double timeSamples);
 }
