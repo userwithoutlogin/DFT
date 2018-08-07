@@ -5,6 +5,7 @@
  */
 package com.mycompany.fouriert;
 
+import com.mycompany.fouriert.complex.Complex;
 import java.util.List;
 
 /**
@@ -12,6 +13,6 @@ import java.util.List;
  * @author root
  */
 public interface FourierTransform {
-    public List<Double> reverse(List<Complex>  spectrumSamples);
-    public List<Complex> direct(List<Double> timeSamples);
+//    public List<Double> reverse(List<Complex>  spectrumSamples);
+    public  Complex direct(Double timeSamples);
 }

@@ -5,6 +5,8 @@
  */
 package com.mycompany.fouriert;
 
+import com.mycompany.fouriert.fasor.Fasor;
+import com.mycompany.fouriert.complex.Complex;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -20,26 +22,18 @@ public class RecoursiveDiscreteTransform implements FourierTransform{
     public RecoursiveDiscreteTransform( Fasor fasor, Integer windowWidth) {
         this.fasor = fasor;         
         this.windowWidth = windowWidth;
+        fasor.initWidth(windowWidth).initBuffer();
     }
          
     
-    
-    @Override
-    public List<Double> reverse(List<Complex> spectrumSamples) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Complex> direct(List<Double> timeSamples) {
-        List<Complex> spectrumSamples = new ArrayList();
-        
-        fasor.initWidth(windowWidth).initTimeSamples(timeSamples).initBuffer();
+     @Override
+    public Complex direct(Double timeSample) {
+        Complex spectrumSample = new Complex(0.0,0.0);
        
-       IntStream.range(0, timeSamples.size() ).forEach(i->{
-            fasor.shift();
-            spectrumSamples.add(fasor.getSample());
-        });
-        return spectrumSamples;  
+        fasor.shift(timeSample);
+        spectrumSample.add(fasor.getSample());  
+        
+        return spectrumSample;  
     }
     
 }

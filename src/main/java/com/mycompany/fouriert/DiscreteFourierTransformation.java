@@ -5,6 +5,7 @@
  */
 package com.mycompany.fouriert;
 
+import com.mycompany.fouriert.complex.Complex;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -13,7 +14,7 @@ import java.util.stream.IntStream;
  *
  * @author root
  */
-public class DiscreteFourierTransformation implements FourierTransform{
+public class DiscreteFourierTransformation  {
      SampleGenerator sampleGenerator ;
 
     public DiscreteFourierTransformation(SampleGenerator sampleGenerator) {
@@ -22,7 +23,7 @@ public class DiscreteFourierTransformation implements FourierTransform{
     
      
     
-   @Override
+    
    public List<Double> reverse(List<Complex> samples){
         int samplesCount = samples.size();
         List<Double> timeSamples = new ArrayList(); ;
@@ -37,7 +38,7 @@ public class DiscreteFourierTransformation implements FourierTransform{
        return timeSamples;
     }
 
-    @Override
+     
     public List<Complex> direct(List<Double> samples) {
         int samplesCount = samples.size();
         List<Complex> spectrumSamples = new ArrayList();
