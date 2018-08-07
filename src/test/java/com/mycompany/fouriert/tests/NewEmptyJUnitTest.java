@@ -50,6 +50,9 @@ public class NewEmptyJUnitTest {
         generator = new Generator(fourierTransform,sine);
         generator.start();
         spectrumSamples = generator.getSpectrumSamples();
+        Complex c = new Complex(0.0,0.0);
+        for(Complex c1:spectrumSamples)
+            c = c.add(c1);
         assertEquals(50, spectrumSamples.size());
     }
     

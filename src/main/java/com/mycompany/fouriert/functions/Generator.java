@@ -34,7 +34,8 @@ public class Generator {
     public void start(){
          Stream.generate(()->{
             return sine.calc();
-         }).limit(50).forEach(timeSample->{              
+         }).limit(50).forEach(timeSample->{   
+             System.out.println(fourierTransform.direct(timeSample));
                 spectrumSamples.add(fourierTransform.direct(timeSample));             
          });
     }
