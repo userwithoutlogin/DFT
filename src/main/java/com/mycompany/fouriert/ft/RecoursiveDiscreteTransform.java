@@ -29,9 +29,7 @@ public class RecoursiveDiscreteTransform implements FourierTransform{
      @Override
     public Complex direct(Double timeSample) {
         Complex spectrumSample = new Complex(0.0,0.0);
-       
-        fasor.shift(timeSample);
-        Complex c = fasor.getSample();
+       fasor.shift(timeSample);
        return spectrumSample.add(fasor.getSample());  
     }
     
