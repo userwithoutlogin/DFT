@@ -5,13 +5,13 @@
  */
 package com.mycompany.fouriert.main;
 
-import com.mycompany.fouriert.FourierTransform;
-import com.mycompany.fouriert.RecoursiveDiscreteTransform;
+import com.mycompany.fouriert.ft.FourierTransform;
+import com.mycompany.fouriert.ft.RecoursiveDiscreteTransform;
 import com.mycompany.fouriert.complex.Complex;
 import com.mycompany.fouriert.fasor.Fasor;
 import com.mycompany.fouriert.fasor.RecoursiveFasor;
-import com.mycompany.functions.Function;
-import com.mycompany.functions.SineFunction;
+import com.mycompany.fouriert.functions.Function;
+import com.mycompany.fouriert.functions.SineFunction;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
