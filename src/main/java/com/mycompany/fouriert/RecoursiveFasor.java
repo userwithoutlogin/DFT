@@ -21,11 +21,8 @@ public class RecoursiveFasor implements Fasor{
     private Integer width;
 
     public RecoursiveFasor( ) {
-//        this.timeSamples = timeSamples;
-//        this.width = width;
         n = 0;
         buffer = new ArrayList();
-        //initBuffer();
     }
  
     
@@ -35,9 +32,9 @@ public class RecoursiveFasor implements Fasor{
          
         buffer.remove(0);
         Complex temp = Complex.initByEuler(1,-2*Math.PI*(width-1)*n/width);
-        buffer.add(temp.multiply(timeSamples.get(width+n-1) ));
+        buffer.add(temp.multiply(timeSamples.get(n) ));
         n++;
-        System.out.println("n "+n);
+         
     }
  
     @Override
@@ -49,13 +46,13 @@ public class RecoursiveFasor implements Fasor{
     }
     
     
+    @Override
    public Fasor initBuffer(){
         Complex spectrumSample = new Complex(0.0,0.0);
         for(int k=0;k<width;k++){
-            Complex temp = Complex.initByEuler(1,-2*Math.PI*k*n/width);
-            buffer.add(temp.multiply(timeSamples.get(k) ));                
+           buffer.add(spectrumSample);                
         }
-        n++;
+         
         return this;
     }
 

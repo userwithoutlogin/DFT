@@ -17,7 +17,7 @@ public class FourierMain {
       public static void main(String[] args) {
           FourierTransform ft = new DiscreteFourierTransformation(new SampleGenerator());
           
-          List<Double> samples = getDiscreteTimeSamples(7,1,Math.PI/2);
+          List<Double> samples = getDiscreteTimeSamples(30,1,Math.PI/2);
           
           List<Complex> spectreSamples = ft.direct(samples);;
           List<Double> newSamples      = ft.reverse(spectreSamples);
@@ -27,7 +27,7 @@ public class FourierMain {
           
           Fasor fasor = new RecoursiveFasor( );
           FourierTransform recFourierTransform = new RecoursiveDiscreteTransform(fasor, 4);
-          List<Complex> recSpectreSamples = recFourierTransform.direct(newSamples);
+          List<Complex> recSpectreSamples = recFourierTransform.direct(samples);
           
          
     }

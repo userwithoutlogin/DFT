@@ -35,11 +35,7 @@ public class RecoursiveDiscreteTransform implements FourierTransform{
         
         fasor.initWidth(windowWidth).initTimeSamples(timeSamples).initBuffer();
        
-        spectrumSamples.add(fasor.getSample());
-        
-        IntStream.range(0, timeSamples.size()-windowWidth).forEach(i->{
-            System.out.println(timeSamples.size()-windowWidth);
-            System.out.println(i);
+       IntStream.range(0, timeSamples.size() ).forEach(i->{
             fasor.shift();
             spectrumSamples.add(fasor.getSample());
         });
