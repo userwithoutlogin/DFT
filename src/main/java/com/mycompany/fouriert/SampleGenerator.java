@@ -5,6 +5,7 @@
  */
 package com.mycompany.fouriert;
 
+import com.mycompany.fouriert.complex.Complex;
 import java.util.ArrayList;
 import java.util.List;
 
