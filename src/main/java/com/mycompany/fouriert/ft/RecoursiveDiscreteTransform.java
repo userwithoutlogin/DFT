@@ -5,32 +5,58 @@
  */
 package com.mycompany.fouriert.ft;
 
-import com.mycompany.fouriert.fasor.Fasor;
 import com.mycompany.fouriert.complex.Complex;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
+ 
+import java.util.LinkedList;
 
 /**
  *
  * @author root
  */
 public class RecoursiveDiscreteTransform implements FourierTransform{
-     Fasor fasor ;
-     Integer windowWidth;
+      
      
-    public RecoursiveDiscreteTransform( Fasor fasor, Integer windowWidth) {
-        this.fasor = fasor;         
-        this.windowWidth = windowWidth;
-        fasor.initWidth(windowWidth).initBuffer();
+     private List<Complex> buffer;
+     private Integer n;
+     private Integer width; 
+     
+    public RecoursiveDiscreteTransform(Integer width) {                  
+        this.width = width;
+        n=0;
+        initBuffer() ;
     }
          
+      public void shift(double timeSample) {         
+        buffer.remove(0);
+        Complex temp = Complex.initByEuler(1,-2*Math.PI*(width-1)*n/width);
+        buffer.add(temp.multiply(timeSample ));
+        n++;         
+    }
+ 
+    
+    public Complex getSample(){
+        Complex sample = new Complex(0.0,0.0);
+        for (Complex b : buffer) 
+            sample = sample.add(b);
+        return sample;        
+    }
+    
     
      @Override
     public Complex direct(Double timeSample) {
         Complex spectrumSample = new Complex(0.0,0.0);
-       fasor.shift(timeSample);
-       return spectrumSample.add(fasor.getSample());  
+        shift(timeSample);
+        return spectrumSample.add( getSample());  
     }
     
+    public void initBuffer(){
+        Complex spectrumSample = new Complex(0.0,0.0);
+        buffer = new LinkedList();
+        for(int k=0;k<width;k++){
+           buffer.add(spectrumSample);                
+        }
+    }
 }
